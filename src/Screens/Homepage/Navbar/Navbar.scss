@@ -1,0 +1,37 @@
+.container {
+    position: relative;
+  width: 100vw; /* fills the width */
+  height: 100vh; /* fills the entire viewport height */
+  background-size: cover; /* This makes sure the background image covers the entire container */
+  background-repeat: no-repeat;
+  text-align: center;
+
+  .navbar-content {
+    margin-top: 40vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1em 2em;
+
+    .col {
+      flex: 1;
+      padding: 0.5em;
+      border-radius: 5px;
+
+      &.start,
+      &.end {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+      }
+
+      &.center {
+        background: transparent;
+      }
+    }
+  }
+}

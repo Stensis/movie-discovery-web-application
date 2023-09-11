@@ -1,0 +1,27 @@
+.text-center {
+  .row {
+    display: flex;
+    flex-wrap: nowrap; // Prevents wrapping, forcing items to stay in one line
+    overflow-x: auto; // Allows horizontal scrolling if content is wider than container
+  }
+
+  .all-movies-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .all-movies-title {
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .movie-card-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 20px;
+  }
+}
