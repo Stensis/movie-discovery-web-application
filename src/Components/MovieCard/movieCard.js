@@ -74,7 +74,7 @@ function MovieCard({ movie }) {
   return (
     <div className="card" style={{ width: "40rem" }} data-testid="movie-card">
       <div className="image-wrapper">
-        <span onClick={toggleFavorite}>
+        <span className="bg-disabled"onClick={toggleFavorite}>
           {isFavorite ? (
             <AiFillHeart className="heart-filled" />
           ) : (

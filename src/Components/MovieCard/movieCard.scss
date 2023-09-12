@@ -67,6 +67,7 @@
     display: flex; 
     align-items: center; 
     justify-content: flex-start; 
+    gap: 30px;
     .icons-name {
       margin-top: 18px;
     }
@@ -74,6 +75,7 @@
     .imbd-btn-two {
       display: flex; 
       align-items: center; 
+     
 
       img {
         margin-right: 5px; 
