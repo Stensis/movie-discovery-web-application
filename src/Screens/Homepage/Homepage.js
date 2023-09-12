@@ -16,7 +16,6 @@ export default function Homepage() {
         Authorization: `Bearer ${process.env.REACT_APP_BEARER_TOKEN}`,
       },
     };
-    
 
     fetch("https://api.themoviedb.org/3/trending/movie/day", options)
       .then((response) => {
@@ -45,8 +44,21 @@ export default function Homepage() {
   return (
     <div className="container-fluid text-center">
       <Navbar />
-      <div className="row mt-5">
-        <div className="col fs-3">Featured Movie</div>
+      <div className="row">
+        <div className="header-container"></div>
+
+        <div class="container text-center mt-3">
+          <div class="row justify-content-between">
+            <div class="col-4">
+              <h4 className="fs-3">Featured Movie</h4>
+            </div>
+            <div class="col-4">
+              <a className="text-danger text-decoration-none" href="/">
+                See more
+              </a>
+            </div>
+          </div>
+        </div>
         <div className="movie-card-container">
           {allMovies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
