@@ -3,7 +3,7 @@
 MovieBox is a dynamic movie discovery web application designed to showcase top trending movies, offer movie search functionality, and display comprehensive details about individual movies. Integrated seamlessly with The Movie Database (TMDB) API, the application presents real-time data in a visually appealing and user-friendly interface.
 
 ## MovieBox Screenshot 
-![MovieBox Screenshot](../movie/src/Assets/Homepage.png)
+![MovieBox Screenshot](../movie//src//Assets//Homepage.png)
 
 ## Features 🌟
 - **Homepage Display**: Showcases the top 10 movies in a visually appealing grid layout.
