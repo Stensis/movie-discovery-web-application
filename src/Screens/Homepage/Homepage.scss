@@ -2,14 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px; // For space between the elements and the container's edges
+  padding: 0 10px;
 
   h4 {
-    margin-right: 10px; // Adds space to the right of the h4 if needed
+    margin-right: 10px;
   }
 
   h6 {
-    margin-left: 10px; // Adds space to the left of the h6 if needed
+    margin-left: 10px;
   }
 }
 
@@ -34,14 +34,9 @@
 
   .movie-card-container {
     display: flex;
-    flex-direction: row; // Arrange children horizontally
-    overflow-x: auto; // Enable horizontal scrolling when there's an overflow
-    gap: 20px; // Spacing between each card
-    white-space: nowrap; // Prevent wrapping onto the next line
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 20px;
+    white-space: nowrap;
   }
-
-  // // Each movie card should be able to flex and shrink to fit the container
-  // > div {
-  //   flex: 0 0 auto;
-  // }
 }

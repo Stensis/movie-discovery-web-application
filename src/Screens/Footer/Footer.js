@@ -6,7 +6,6 @@ import Youtube from "../../Assets/fa-brands_youtube.jpg";
 
 export default function Footer() {
   return (
-    // <!-- Parent container to hold the three vertical divs -->
     <div class="container mt-5">
       {/* <!-- First vertical div --> */}
       <div class="row justify-content-center mb-1">
@@ -37,7 +36,7 @@ export default function Footer() {
           class="col-md-12 text-dark text-center"
           style={{ fontSize: "0.8rem" }}
         >
-          &copy; 2021 MovieBox by Adriana Eka Prayuda
+          &copy; 2021 MovieBox by Irene Njuguna.
         </div>
       </div>
     </div>

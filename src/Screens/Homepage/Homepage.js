@@ -54,15 +54,19 @@ export default function Homepage() {
             </div>
             <div class="col-4">
               <a className="text-danger text-decoration-none" href="/">
-                See more
+                See more 
               </a>
             </div>
           </div>
         </div>
-        <div className="movie-card-container">
-          {allMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
+        <div className="movie-card-container" style={{ overflowX: "auto" }}>
+          <div className="row">
+            {allMovies.map((movie) => (
+              <div key={movie.id} className="col-md-3 col-12">
+                <MovieCard movie={movie} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div>

@@ -1,0 +1,11 @@
+.search-results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+.search-results .MovieCard {
+  width: 200px;
+  margin: 0 auto;
+}
