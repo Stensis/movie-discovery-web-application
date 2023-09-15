@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { EmptyData } from "./EmptyData/emptyData";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
-
   const API_KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -17,13 +17,26 @@ const MovieDetails = () => {
         );
 
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          switch (response.status) {
+            case 404:
+              throw new Error("The requested movie could not be found.");
+            case 500:
+              throw new Error(
+                "There was a server error. Please try again later."
+              );
+            default:
+              throw new Error(`API error! Status: ${response.status}`);
+          }
         }
 
         const data = await response.json();
+        if (!data || Object.keys(data).length === 0) {
+          throw new Error("The data for the requested movie is empty.");
+        }
+
         setMovie(data);
       } catch (error) {
-        setError(`Error fetching movie details: ${error}`);
+        setError(error.message);
       }
     };
 
@@ -34,6 +47,9 @@ const MovieDetails = () => {
     return <div>Error: {error}</div>;
   }
 
+  if (!movie || Object.keys(movie).length === 0) {
+    return <EmptyData />;
+  }
   return (
     <div>
       <div
@@ -75,7 +91,6 @@ const MovieDetails = () => {
             minHeight: "60vh",
           }}
         >
-          <h3 data-testid="movie-title mb-2">{movie.title}</h3>
           <button
             style={{
               backgroundColor: "red",
