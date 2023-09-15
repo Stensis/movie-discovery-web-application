@@ -1,37 +1,19 @@
-.search-container {
-  position: relative;
-}
-.input-field {
-  background-color: transparent !important;
-}
+
 .error-text {
   color: white !important; 
   margin-top: 5px;
   font-size: 14px;
 }
 
-#search-input {
-  width: 100%;
-  padding: 10px;
-  padding-right: 40px; /* Adjusted space for the icon */
-  border: 2px solid #7e1d22;
-  border-radius: 10px;
-  font-size: 16px;
-  background-color: transparent;
-  color: #fff;
-
-  &:focus {
-    border: 2px solid #16323a;
-    border-radius: 10px;
-  }
+.input-wrapper {
+  position: relative;
 }
 
 .search-icon {
   position: absolute;
-  right: 10px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  background: none;
-  border: none;
 }
+

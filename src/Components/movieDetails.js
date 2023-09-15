@@ -36,26 +36,24 @@ const MovieDetails = () => {
 
   return (
     <div>
-      {/* Banner Section */}
-
       <div
         style={{
-          position: "relative", 
+          position: "relative",
           minHeight: "60vh",
         }}
       >
         <button
           onClick={() => navigate(-1)}
           style={{
-            position: "absolute", 
-            top: "10px", 
-            left: "10px", 
-            backgroundColor: "rgba(0, 0, 0, 0.7)", 
+            position: "absolute",
+            top: "10px",
+            left: "10px",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
             color: "#fff",
             border: "none",
             borderRadius: "5px",
             padding: "5px 15px",
-            zIndex: 2, 
+            zIndex: 2,
           }}
         >
           Go Back
@@ -92,7 +90,6 @@ const MovieDetails = () => {
         </div>
       </div>
 
-      {/* Movie Details Section */}
       <div style={{ padding: "50px" }}>
         <h5
           data-testid="movie-title"
@@ -109,7 +106,6 @@ const MovieDetails = () => {
         <p data-testid="movie-overview">{movie.overview}</p>
       </div>
 
-      {/* Trailer */}
       {movie.trailer && (
         <div style={{ textAlign: "center" }}>
           <video width="320" height="240" controls>

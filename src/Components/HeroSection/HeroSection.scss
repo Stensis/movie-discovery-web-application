@@ -1,0 +1,12 @@
+@media only screen and (max-width: 768px) {
+  .container-fluid {
+    height: 100vh;
+  }
+  .btn {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .text-uppercase.font-weight-bold {
+    display: none;
+  }
+}

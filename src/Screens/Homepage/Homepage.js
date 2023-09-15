@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar/Navbar";
+import HeroSection from "../../Components/HeroSection/HeroSection";
 import MovieCard from "../../Components/MovieCard/movieCard";
 import Footer from "../Footer/Footer";
 
@@ -42,11 +42,9 @@ export default function Homepage() {
   }, []);
 
   return (
-    <div className="container-fluid text-center">
-      <Navbar />
+    <div className="">
+      <HeroSection />
       <div className="row">
-        <div className="header-container"></div>
-
         <div class="container text-center mt-3">
           <div class="row justify-content-between">
             <div class="col-4">
@@ -54,7 +52,7 @@ export default function Homepage() {
             </div>
             <div class="col-4">
               <a className="text-danger text-decoration-none" href="/">
-                See more 
+                See more
               </a>
             </div>
           </div>

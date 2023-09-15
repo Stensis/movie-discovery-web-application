@@ -10,7 +10,7 @@ import tomato from "../../Assets/appleIcon.jpg";
 function MovieCard({ movie }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [genres, setGenres] = useState({});
-  const [error, setError] = useState(null); // Added error state
+  const [error, setError] = useState(null); 
 
   const BEARER_TOKEN = process.env.REACT_APP_BEARER_TOKEN;
 
@@ -28,7 +28,9 @@ function MovieCard({ movie }) {
         );
 
         if (!response.ok) {
-          throw new Error(`Failed to fetch genres. HTTP error! Status: ${response.status}`);
+          throw new Error(
+            `Failed to fetch genres. HTTP error! Status: ${response.status}`
+          );
         }
 
         const genresData = await response.json();
@@ -74,57 +76,64 @@ function MovieCard({ movie }) {
   };
 
   return (
-    <div className="card mt-4" style={{ width: "40rem" }} data-testid="movie-card">
-      {error ? (
-        <div className="error">{error}</div>
-      ) : (
-        <>
-          <div className="image-wrapper">
-            <span className="bg-disabled" onClick={toggleFavorite}>
-              {isFavorite ? (
-                <AiFillHeart className="heart-filled" />
-              ) : (
-                <FiHeart className="heart" />
-              )}
-            </span>
-            <Link to={`/movie/${movie.id}`}>
+    <Link style={{textDecoration:"none"}} to={`/movie/${movie.id}`}>
+      <div
+        className="card mt-4"
+        style={{ width: "40rem" }}
+        data-testid="movie-card"
+      >
+        {error ? (
+          <div className="error">{error}</div>
+        ) : (
+          <>
+            <div className="image-wrapper">
+              <span className="bg-disabled" onClick={toggleFavorite}>
+                {isFavorite ? (
+                  <AiFillHeart className="heart-filled" />
+                ) : (
+                  <FiHeart className="heart" />
+                )}
+              </span>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
                 alt={movie.title || "Movie"}
                 className="card-img-top movie-poster"
                 data-testid="movie-poster"
               />
-            </Link>
-          </div>
-
-          <div className="card-body">
-            <p className="card-text movie-release-date" data-testid="movie-release-date">
-              {`Release Date: ${
-                formatDate(movie.release_date) || "Release date not available"
-              }`}
-            </p>
-            <h3 className="card-title movie-title" data-testid="movie-title">
-              {movie.title || "Title not available"}
-            </h3>
-
-            <div className="imdb-card">
-              <span className="imbd-btn">
-                <img src={Imdb} alt="imdb-logo" />
-                <p className="icons-name">{movie.vote_average}</p>
-              </span>
-              <span className="imbd-btn-two">
-                <img src={tomato} alt="imdb-tomato" />
-                <p className="icons-name">97%</p>
-              </span>
             </div>
 
-            <div>
-              <p className="genre">{getGenreNames(movie.genre_ids)}</p>
+            <div className="card-body">
+              <p
+                className="card-text movie-release-date"
+                data-testid="movie-release-date"
+              >
+                {`Release Date: ${
+                  formatDate(movie.release_date) || "Release date not available"
+                }`}
+              </p>
+              <h3 className="card-title movie-title" data-testid="movie-title">
+                {movie.title || "Title not available"}
+              </h3>
+
+              <div className="imdb-card">
+                <span className="imbd-btn">
+                  <img src={Imdb} alt="imdb-logo" />
+                  <p className="icons-name">{movie.vote_average}</p>
+                </span>
+                <span className="imbd-btn-two">
+                  <img src={tomato} alt="imdb-tomato" />
+                  <p className="icons-name">97%</p>
+                </span>
+              </div>
+
+              <div>
+                <p className="genre">{getGenreNames(movie.genre_ids)}</p>
+              </div>
             </div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </Link>
   );
 }
 

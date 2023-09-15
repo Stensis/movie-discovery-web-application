@@ -1,8 +1,8 @@
 .container {
-    position: relative;
-  width: 100vw; 
-  height: 100vh; 
-  background-size: cover; 
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
   background-repeat: no-repeat;
   text-align: center;
 
@@ -32,6 +32,15 @@
       &.center {
         background: transparent;
       }
+    }
+
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+
+      .col {
+        width: 100%;
+      }
+     
     }
   }
 }

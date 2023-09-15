@@ -1,6 +1,7 @@
 .card {
   width: 20rem !important;
   margin: 15px !important;
+  height: "50vh";
   border: 1px solid #e0e0e0;
   padding: 15px;
   border-radius: 10px;
@@ -8,9 +9,8 @@
   transition: transform 0.3s;
 
   &:hover {
-    transform: scale(1.05);
     border-radius: 10px;
-    border: 2px solid #edf760;
+    border: 2px solid #333521;
   }
 
   .image-wrapper {
@@ -32,7 +32,7 @@
 
     .movie-poster {
       max-width: 100%;
-      height: 30vh;
+      height: 40vh;
       border-radius: 5px;
     }
   }
