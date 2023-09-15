@@ -6,25 +6,20 @@ import { AiFillHeart } from "react-icons/ai";
 import "../MovieCard/movieCard.scss";
 import Imdb from "../../Assets/imdb.jpg";
 import tomato from "../../Assets/appleIcon.jpg";
-import "./ErrorComponent.scss"; 
+import "./ErrorComponent.scss";
 
 function MovieCard({ movie }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [genres, setGenres] = useState({});
   const [error, setError] = useState(null);
 
-  const BEARER_TOKEN = process.env.REACT_APP_BEARER_TOKEN;
+  // Environment variable for API key is accessed as follows
+  const API_KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
 
   const fetchGenres = async () => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?language=en-US`,
-        {
-          headers: {
-            Authorization: `Bearer ${BEARER_TOKEN}`,
-            "Content-Type": "application/json;charset=utf-8",
-          },
-        }
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
 
       if (!response.ok) {
@@ -54,12 +49,12 @@ function MovieCard({ movie }) {
 
   useEffect(() => {
     fetchGenres();
-  }, [BEARER_TOKEN]);
+  }, []); 
 
   if (!movie) return null;
 
   const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
+    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
 
   const formatDate = (dateString) => {
