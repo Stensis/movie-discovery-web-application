@@ -1,0 +1,32 @@
+.movie-card-container {
+    
+    padding: 0;
+    margin: 0;
+}
+
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .movie-list {
+      grid-template-columns: repeat(3, 1fr); 
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .movie-list {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .movie-list {
+      grid-template-columns: 1fr; 
+    }
+  }
+  

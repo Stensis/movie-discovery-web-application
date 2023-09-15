@@ -34,9 +34,13 @@
 
   .movie-card-container {
     display: flex;
-    flex-direction: row;
     overflow-x: auto;
-    gap: 20px;
     white-space: nowrap;
+    width: 70%;
+  }
+
+  .movie-list {
+    display: flex;
+    flex-wrap: nowrap;
   }
 }

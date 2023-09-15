@@ -6,55 +6,53 @@ import { AiFillHeart } from "react-icons/ai";
 import "../MovieCard/movieCard.scss";
 import Imdb from "../../Assets/imdb.jpg";
 import tomato from "../../Assets/appleIcon.jpg";
-import "./ErrorComponent.scss";
 
 function MovieCard({ movie }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [genres, setGenres] = useState({});
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); // Added error state
 
-  // Environment variable for API key is accessed as follows
-  const API_KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
-
-  const fetchGenres = async () => {
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
-      );
-
-      if (!response.ok) {
-        setError(
-          `Failed to fetch genres. HTTP error! Status: ${response.status}`
-        );
-        throw new Error(
-          `Failed to fetch genres. HTTP error! Status: ${response.status}`
-        );
-      }
-
-      const genresData = await response.json();
-      const genresMap = {};
-      genresData.genres.forEach((genre) => {
-        genresMap[genre.id] = genre.name;
-      });
-      setGenres(genresMap);
-    } catch (error) {
-      console.error("Error fetching genres:", error);
-    }
-  };
-
-  const handleRetry = () => {
-    setError(null);
-    fetchGenres();
-  };
+  const BEARER_TOKEN = process.env.REACT_APP_BEARER_TOKEN;
+  console.log(BEARER_TOKEN)
 
   useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/genre/movie/list?language=en-US`,
+          {
+            headers: {
+              Authorization: `Bearer ${BEARER_TOKEN}`,
+              "Content-Type": "application/json;charset=utf-8",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Failed to fetch genres. HTTP error! Status: ${response.status}`
+          );
+        }
+
+        const genresData = await response.json();
+        const genresMap = {};
+        genresData.genres.forEach((genre) => {
+          genresMap[genre.id] = genre.name;
+        });
+        setGenres(genresMap);
+      } catch (error) {
+        console.error("Error fetching genres:", error);
+        setError(error.message);
+      }
+    };
+
     fetchGenres();
-  }, []); 
+  }, [BEARER_TOKEN]);
 
   if (!movie) return null;
 
   const toggleFavorite = () => {
-    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
+    setIsFavorite(!isFavorite);
   };
 
   const formatDate = (dateString) => {
@@ -79,19 +77,14 @@ function MovieCard({ movie }) {
   };
 
   return (
-    <Link style={{ textDecoration: "none" }} to={`/movie/${movie.id}`}>
+    <Link style={{textDecoration:"none"}} to={`/movie/${movie.id}`}>
       <div
         className="card mt-4"
-        style={{ width: "40rem" }}
+        style={{ width: "25rem" }}
         data-testid="movie-card"
       >
         {error ? (
-          <div className="error-component">
-            <div className="error-message">{error}</div>
-            <button onClick={handleRetry} className="retry-button">
-              Retry
-            </button>
-          </div>
+          <div className="error">{error}</div>
         ) : (
           <>
             <div className="image-wrapper">
@@ -109,6 +102,7 @@ function MovieCard({ movie }) {
                 data-testid="movie-poster"
               />
             </div>
+
             <div className="card-body">
               <p
                 className="card-text movie-release-date"
@@ -121,6 +115,7 @@ function MovieCard({ movie }) {
               <h3 className="card-title movie-title" data-testid="movie-title">
                 {movie.title || "Title not available"}
               </h3>
+
               <div className="imdb-card">
                 <span className="imbd-btn">
                   <img src={Imdb} alt="imdb-logo" />
@@ -131,6 +126,7 @@ function MovieCard({ movie }) {
                   <p className="icons-name">97%</p>
                 </span>
               </div>
+
               <div>
                 <p className="genre">{getGenreNames(movie.genre_ids)}</p>
               </div>
