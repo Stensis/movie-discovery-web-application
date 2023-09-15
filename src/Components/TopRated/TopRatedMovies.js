@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "../MovieCard/movieCard";
-import "./topRated.scss"
+import "./topRated.scss";
 
 function TopRatedMovies() {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+
   const API_KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
 
   useEffect(() => {
@@ -23,6 +25,7 @@ function TopRatedMovies() {
         setMovies(movieData.results.slice(0, 10)); // Take the first 10 movies
       } catch (error) {
         console.error("Error fetching top rated movies:", error);
+        setError(`Error fetching top-rated movies. ${error.message}`);
       }
     };
 
@@ -31,6 +34,7 @@ function TopRatedMovies() {
 
   return (
     <div className="movie-card-container">
+      {error && <div className="error">{error}</div>}
       <div className="movie-list">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />

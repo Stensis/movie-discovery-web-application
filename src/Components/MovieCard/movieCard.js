@@ -80,7 +80,7 @@ function MovieCard({ movie }) {
     <Link style={{textDecoration:"none"}} to={`/movie/${movie.id}`}>
       <div
         className="card mt-4"
-        style={{ width: "25rem" }}
+        // style={{ width: "25rem" }}
         data-testid="movie-card"
       >
         {error ? (
